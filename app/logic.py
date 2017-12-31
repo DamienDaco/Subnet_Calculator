@@ -3,10 +3,10 @@ import binascii
 
 class Logic:
 
-    def __init__(self, ip):
+    def __init__(self):
         super().__init__()
 
-        self.ip = str(ip)
+        self.ip = ""
 
     def ipv4_subnet_calc(self):
 
@@ -22,12 +22,17 @@ class Logic:
             string_first_ip = string_subnet[:-1] + '1'
             string_last_ip = string_broadcast[:-1] + '0'
 
-            print('Subnet ID is %s' % self.string_to_decimal(string_subnet))
-            print('First valid IP is %s' % self.string_to_decimal(string_first_ip))
-            print('Last valid IP is %s' % self.string_to_decimal(string_last_ip))
-            print('Broadcast IP is %s' % self.string_to_decimal(string_broadcast))
+            self.subnet_id = self.string_to_decimal(string_subnet)
+            self.first_ip = self.string_to_decimal(string_first_ip)
+            self.last_ip = self.string_to_decimal(string_last_ip)
+            self.broadcast_ip = self.string_to_decimal(string_broadcast)
 
-            self.ip_range(string_first_ip, string_last_ip)
+            print('Subnet ID is %s' % self.subnet_id)
+            print('First valid IP is %s' % self.first_ip)
+            print('Last valid IP is %s' % self.last_ip)
+            print('Broadcast IP is %s' % self.broadcast_ip)
+
+            # self.ip_range(string_first_ip, string_last_ip)
 
     def string_to_decimal(self, s):
 
@@ -35,9 +40,9 @@ class Logic:
         return decimal_ip
 
     def ip_to_integer(self, s):
+
         # This function is expecting an ip in string form '000000000000...1'
-        binary_ip = binascii.a2b_qp(
-            s)  # First we need to convert our string to binary. Binascii is perfect for this.
+        binary_ip = binascii.a2b_qp(s)  # First we need to convert our string to binary. Binascii is perfect for this.
         integer_ip = int(binary_ip, 2)  # int(i, 2) can covert binary code to integer.
         return integer_ip
 
