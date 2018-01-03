@@ -8,6 +8,10 @@ from ui.design_subnet_calculator import Ui_MainWindow
 from app.logic import *
 import sys
 
+# TODO : Fix the user input box triggering multiple times
+# TODO : Add feature to save ip list as .txt
+# TODO : Add multithreading. App is freezing when displaying large ranges
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -37,6 +41,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.box_first_ip_binary.setText(self.logic.string_first_ip)
                 self.box_last_ip_binary.setText(self.logic.string_last_ip)
                 self.box_broadcast_ip_binary.setText(self.logic.string_broadcast)
+
+                self.logic.ip_range()
+                for i in self.logic.ip_list:
+                    self.text_browser.append(i)
+
         else:
             pass
 
