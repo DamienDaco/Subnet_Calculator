@@ -22,14 +22,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def process_ip(self):
 
-        self.logic.ip = str(self.box_user_input.text())
-        print('Current ip %s' % self.logic.ip)
-        self.logic.ipv4_subnet_calc()
+        if self.box_user_input.text():
+            self.logic.ip = str(self.box_user_input.text())
+            print('Current ip %s' % self.logic.ip)
+            self.logic.ipv4_subnet_calc()
 
-        self.box_subnet_id.setText(self.logic.subnet_id)
-        self.box_first_ip.setText(self.logic.first_ip)
-        self.box_last_ip.setText(self.logic.last_ip)
-        self.box_broadcast_ip.setText(self.logic.broadcast_ip)
+            self.box_subnet_id.setText(self.logic.subnet_id)
+            self.box_first_ip.setText(self.logic.first_ip)
+            self.box_last_ip.setText(self.logic.last_ip)
+            self.box_broadcast_ip.setText(self.logic.broadcast_ip)
+        else:
+            pass
 
 
 if __name__ == "__main__":
