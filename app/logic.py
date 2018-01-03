@@ -17,15 +17,15 @@ class Logic:
         if '/' in self.ip:
             slash = (int(self.ip.split('/')[1]))
             offset = 32 - slash
-            string_subnet = string_ip[:slash] + offset * "0"
-            string_broadcast = string_ip[:slash] + offset * "1"
-            string_first_ip = string_subnet[:-1] + '1'
-            string_last_ip = string_broadcast[:-1] + '0'
+            self.string_subnet = string_ip[:slash] + offset * "0"
+            self.string_broadcast = string_ip[:slash] + offset * "1"
+            self.string_first_ip = self.string_subnet[:-1] + '1'
+            self.string_last_ip = self.string_broadcast[:-1] + '0'
 
-            self.subnet_id = self.string_to_decimal(string_subnet)
-            self.first_ip = self.string_to_decimal(string_first_ip)
-            self.last_ip = self.string_to_decimal(string_last_ip)
-            self.broadcast_ip = self.string_to_decimal(string_broadcast)
+            self.subnet_id = self.string_to_decimal(self.string_subnet)
+            self.first_ip = self.string_to_decimal(self.string_first_ip)
+            self.last_ip = self.string_to_decimal(self.string_last_ip)
+            self.broadcast_ip = self.string_to_decimal(self.string_broadcast)
 
             print('Subnet ID is %s' % self.subnet_id)
             print('First valid IP is %s' % self.first_ip)
