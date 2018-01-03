@@ -34,6 +34,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.box_broadcast_ip.setText(self.logic.broadcast_ip)
 
                 self.box_subnet_id_binary.setText(self.logic.string_subnet)
+                self.box_first_ip_binary.setText(self.logic.string_first_ip)
+                self.box_last_ip_binary.setText(self.logic.string_last_ip)
+                self.box_broadcast_ip_binary.setText(self.logic.string_broadcast)
         else:
             pass
 
