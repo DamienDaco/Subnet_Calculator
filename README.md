@@ -3,9 +3,9 @@ Simple IPv4 subnet calculator.
 
 ![alt text](https://i.imgur.com/x6SOVUa.png)
 
-Usage:
+<b>Usage:</b>
 
-Just enter any IPv4/mask combination and press <ENTER>.
+Just enter any IPv4/mask combination and press <b>ENTER</b>.
 
 The calculator will display:
 
