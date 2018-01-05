@@ -1,7 +1,7 @@
 # Subnet_Calculator
 Simple IPv4 subnet calculator.
 
-![alt text](http://i.imgur.com/OkpRSZm.png)
+![alt text](https://i.imgur.com/gHdh5bf.png)
 
 Usage:
 
