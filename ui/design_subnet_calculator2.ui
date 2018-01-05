@@ -156,10 +156,10 @@
           <item row="1" column="0">
            <widget class="QLineEdit" name="box_user_input">
             <property name="toolTip">
-             <string>Enter your IP/mask combination here, e.g. 192.168.1.130/25</string>
+             <string>Enter your IP/mask combination here, e.g. 192.168.1.130/25, then press &lt;ENTER&gt;</string>
             </property>
             <property name="statusTip">
-             <string>Enter your IP and mask</string>
+             <string>Enter your IP and mask and press &lt;ENTER&gt;</string>
             </property>
             <property name="placeholderText">
              <string>Ex: 192.168.1.10/24</string>

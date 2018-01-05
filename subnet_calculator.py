@@ -1,6 +1,8 @@
 try:
     from PyQt5.QtCore import *
+    from PyQt5.QtGui import *
     from PyQt5.QtWidgets import *
+
 except:
     print("[-] Import failed. PyQt5 library not found. \nTry installing it with: apt install python3-qt5")
     exit()
@@ -8,7 +10,6 @@ from ui.design_subnet_calculator import Ui_MainWindow
 from app.logic import *
 import sys
 
-# TODO : Fix the user input box triggering multiple times
 # TODO : Add feature to save ip list as .txt
 # TODO : Add multithreading. App is freezing when displaying large ranges
 
@@ -22,7 +23,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.logic = Logic()
 
-        self.box_user_input.editingFinished.connect(self.process_ip)
+        self.shortcut_enter = QShortcut(QKeySequence("Enter"), self)
+        self.shortcut_enter.activated.connect(self.process_ip)
 
     def process_ip(self):
 

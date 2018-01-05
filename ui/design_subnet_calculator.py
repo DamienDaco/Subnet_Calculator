@@ -127,7 +127,7 @@ class Ui_MainWindow(object):
         self.box_broadcast_ip.setStatusTip(_translate("MainWindow", "Broadcast address"))
         self.box_subnet_id.setStatusTip(_translate("MainWindow", "Subnetwork address"))
         self.label_enterip.setText(_translate("MainWindow", "Enter your IP/mask:"))
-        self.box_user_input.setToolTip(_translate("MainWindow", "Enter your IP/mask combination here, e.g. 192.168.1.130/25"))
-        self.box_user_input.setStatusTip(_translate("MainWindow", "Enter your IP and mask"))
+        self.box_user_input.setToolTip(_translate("MainWindow", "Enter your IP/mask combination here, e.g. 192.168.1.130/25, then press <ENTER>"))
+        self.box_user_input.setStatusTip(_translate("MainWindow", "Enter your IP and mask and press <ENTER>"))
         self.box_user_input.setPlaceholderText(_translate("MainWindow", "Ex: 192.168.1.10/24"))
 
