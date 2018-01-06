@@ -32,7 +32,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.box_user_input.text():
             self.logic.ip = self.box_user_input.text()
             print('Current ip %s' % self.logic.ip)
-            self.logic.ipv4_subnet_calc()
+            self.logic.ipv4_subnet_calc_with_int()
 
             if '/' in self.box_user_input.text():
                 self.box_subnet_id.setText(self.logic.subnet_id)
@@ -40,10 +40,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.box_last_ip.setText(self.logic.last_ip)
                 self.box_broadcast_ip.setText(self.logic.broadcast_ip)
 
-                self.box_subnet_id_binary.setText(self.logic.string_subnet)
-                self.box_first_ip_binary.setText(self.logic.string_first_ip)
-                self.box_last_ip_binary.setText(self.logic.string_last_ip)
-                self.box_broadcast_ip_binary.setText(self.logic.string_broadcast)
+                self.box_subnet_id_binary.setText(self.logic.subnet_id)
+                self.box_first_ip_binary.setText(self.logic.first_ip)
+                self.box_last_ip_binary.setText(self.logic.last_ip)
+                self.box_broadcast_ip_binary.setText(self.logic.broadcast_ip)
 
                 self.logic.ip_range()
                 for i in self.logic.ip_list:
