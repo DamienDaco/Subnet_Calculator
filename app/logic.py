@@ -1,4 +1,3 @@
-import binascii
 
 
 class Logic:
@@ -12,7 +11,6 @@ class Logic:
 
         octets = [int(i) for i in self.ip.split('/')[0].split('.')]
         string_ip = '{0:08b}{1:08b}{2:08b}{3:08b}'.format(*octets)
-        # binary_ip = binascii.a2b_qp(string_ip)
 
         if '/' in self.ip:
             slash = (int(self.ip.split('/')[1]))
@@ -42,8 +40,7 @@ class Logic:
     def ip_to_integer(self, s):
 
         # This function is expecting an ip in string form '000000000000...1'
-        binary_ip = binascii.a2b_qp(s)  # First we need to convert our string to binary. Binascii is perfect for this.
-        integer_ip = int(binary_ip, 2)  # int(i, 2) can covert binary code to integer.
+        integer_ip = int(s, 2)      # int(i, 2) can covert a string of binary code to integer.
         return integer_ip
 
     def ip_range(self):
