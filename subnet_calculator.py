@@ -26,6 +26,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.shortcut_enter = QShortcut(QKeySequence("Enter"), self)
         self.shortcut_enter.activated.connect(self.process_ip)
         self.action_save_as.triggered.connect(self.save_file)
+        self.range_button.clicked.connect(self.display_ip_range)
 
     def process_ip(self):
 
@@ -48,10 +49,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.box_last_ip_binary.setText(self.logic.binary_string_last_ip)
                     self.box_broadcast_ip_binary.setText(self.logic.binary_string_broadcast)
 
-                    self.logic.ip_range()
-                    for i in self.logic.ip_list:
-                        self.text_browser.append(i)
-
                 if self.logic.host_bits == 1:
 
                     self.box_first_ip.setText(self.logic.first_ip)
@@ -63,10 +60,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                     self.box_first_ip_binary.setText(self.logic.binary_string_first_ip)
                     self.box_last_ip_binary.setText(self.logic.binary_string_last_ip)
-
-                    self.logic.ip_range()
-                    for i in self.logic.ip_list:
-                        self.text_browser.append(i)
 
                 if self.logic.host_bits == 0:
 
@@ -83,6 +76,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         else:
             pass
+
+    def display_ip_range(self):
+
+        self.process_ip()
+        self.logic.ip_range()
+        for i in self.logic.ip_list:
+            self.text_browser.append(i)
 
     def save_file(self):
 

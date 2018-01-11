@@ -146,28 +146,8 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_enterip">
-            <property name="text">
-             <string>Enter your IP/mask:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLineEdit" name="box_user_input">
-            <property name="toolTip">
-             <string>Enter your IP/mask combination here, e.g. 192.168.1.130/25, then press &lt;ENTER&gt;</string>
-            </property>
-            <property name="statusTip">
-             <string>Enter your IP and mask and press &lt;ENTER&gt;</string>
-            </property>
-            <property name="placeholderText">
-             <string>Ex: 192.168.1.10/24</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <spacer name="horizontalSpacer">
+          <item row="3" column="0">
+           <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -180,7 +160,27 @@
            </spacer>
           </item>
           <item row="2" column="0">
-           <spacer name="horizontalSpacer_2">
+           <widget class="QLineEdit" name="box_user_input">
+            <property name="toolTip">
+             <string>Enter your IP/mask combination here, e.g. 192.168.1.130/25, then press &lt;ENTER&gt;</string>
+            </property>
+            <property name="statusTip">
+             <string>Enter your IP and mask and press &lt;ENTER&gt;</string>
+            </property>
+            <property name="placeholderText">
+             <string>Ex: 192.168.1.10/24</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_enterip">
+            <property name="text">
+             <string>Enter your IP/mask:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -191,6 +191,13 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item row="2" column="1">
+           <widget class="QPushButton" name="range_button">
+            <property name="text">
+             <string>Range</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -230,7 +237,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_save_as">
    <property name="text">
-    <string>Save/Save as</string>
+    <string>&amp;Save/Save as</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -238,7 +245,7 @@
   </action>
   <action name="action_about">
    <property name="text">
-    <string>About</string>
+    <string>&amp;About</string>
    </property>
   </action>
  </widget>
