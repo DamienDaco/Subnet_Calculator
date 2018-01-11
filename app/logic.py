@@ -38,21 +38,35 @@ class Logic:
 
         if '/' in self.ip:
             slash = (int(self.ip.split('/')[1]))
-            offset = 32 - slash
+            self.host_bits = 32 - slash
 
-            self.int_subnet = int_ip >> offset << offset
-            self.int_first_ip = self.int_subnet + 1
-            self.int_broadcast_ip = self.int_subnet | 2**offset - 1         # Black magic!
-            self.int_last_ip = self.int_broadcast_ip - 1
+            if self.host_bits > 1:
+                self.int_subnet_id = int_ip >> self.host_bits << self.host_bits
+                self.int_first_ip = self.int_subnet_id + 1
+                self.int_broadcast_ip = int_ip | 2**self.host_bits - 1       # Let's turn the host bits into ones. Yes, this is black magic.
+                self.int_last_ip = self.int_broadcast_ip - 1
 
-            self.subnet_id = self.string_to_decimal(self.integer_to_binary(self.int_subnet))
-            self.first_ip = self.string_to_decimal(self.integer_to_binary(self.int_first_ip))
-            self.last_ip = self.string_to_decimal(self.integer_to_binary(self.int_last_ip))
-            self.broadcast_ip = self.string_to_decimal(self.integer_to_binary(self.int_broadcast_ip))
+                self.subnet_id = self.integer_to_decimal(self.int_subnet_id)
+                self.first_ip = self.integer_to_decimal(self.int_first_ip)
+                self.last_ip = self.integer_to_decimal(self.int_last_ip)
+                self.broadcast_ip = self.integer_to_decimal(self.int_broadcast_ip)
 
-    def string_to_decimal(self, s):
+            if self.host_bits == 1:
+                self.int_first_ip = int_ip >> self.host_bits << self.host_bits
+                self.int_last_ip = self.int_first_ip + 1
 
-        decimal_ip = '.'.join(map(str, [int(s[:8], 2), int(s[8:16], 2), int(s[16:24], 2), int(s[24:32], 2)]))
+                self.first_ip = self.integer_to_decimal(self.int_first_ip)
+                self.last_ip = self.integer_to_decimal(self.int_last_ip)
+
+            if self.host_bits == 0:
+                self.int_first_ip = int_ip
+
+                self.first_ip = self.integer_to_decimal(self.int_first_ip)
+
+    def integer_to_decimal(self, i):
+
+        i = '{0:032b}'.format(i)
+        decimal_ip = '.'.join(map(str, [int(i[:8], 2), int(i[8:16], 2), int(i[16:24], 2), int(i[24:32], 2)]))
         return decimal_ip
 
     def ip_to_integer(self, s):
@@ -70,7 +84,7 @@ class Logic:
 
         for i in range(self.int_first_ip, self.int_last_ip + 1):      # The range of IPs (+1 because python range stops before the last value)
             # print(self.string_to_decimal(self.integer_to_binary(i)))    # Convert int to binary string, then convert to to dotted decimal form for displaying
-            self.ip_list.append(self.string_to_decimal(self.integer_to_binary(i)))
+            self.ip_list.append(self.integer_to_decimal(i))
 
     def integer_to_binary(self, i):
 
