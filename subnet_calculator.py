@@ -80,9 +80,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def display_ip_range(self):
 
         self.process_ip()
-        self.logic.ip_range()
-        for i in self.logic.ip_list:
-            self.text_browser.append(i)
+        self.logic.start_thread()
+        self.logic.thread.worker.str_signal.connect(self.append_to_txt_browser)
+
+    def append_to_txt_browser(self, s):
+        self.text_browser.setText(s)
 
     def save_file(self):
 

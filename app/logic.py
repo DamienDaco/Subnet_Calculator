@@ -1,3 +1,4 @@
+from app.multithreading import *
 
 
 class Logic:
@@ -6,6 +7,7 @@ class Logic:
         super().__init__()
 
         self.ip = ""
+        self.threads = []
 
     def ipv4_subnet_calc_with_int(self):
 
@@ -78,6 +80,19 @@ class Logic:
         i = '{0:032b}'.format(i)
         return i
 
+    def start_thread(self):
+
+        self.thread = MultiThreading(self.int_first_ip, self.int_last_ip)
+        self.thread.start_thread()
+        self.threads.append(self.thread)
+
+    def stop_thread(self):
+
+        if len(self.threads) > 0:               # Check if there's something in the list
+            for thread in self.threads:         # Let's go through the list of threads
+                thread.stop_thread()            # And send the stop signal to each thread
+
+        self.threads = []                       # When done, reset list
 
     # def ipv4_subnet_calc_with_strings(self):
     #
