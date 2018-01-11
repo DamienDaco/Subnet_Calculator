@@ -37,15 +37,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if '/' in self.box_user_input.text():
 
                 if self.logic.host_bits > 1:
+
                     self.box_subnet_id.setText(self.logic.subnet_id)
                     self.box_first_ip.setText(self.logic.first_ip)
                     self.box_last_ip.setText(self.logic.last_ip)
                     self.box_broadcast_ip.setText(self.logic.broadcast_ip)
 
-                    self.box_subnet_id_binary.setText(self.logic.subnet_id)
-                    self.box_first_ip_binary.setText(self.logic.first_ip)
-                    self.box_last_ip_binary.setText(self.logic.last_ip)
-                    self.box_broadcast_ip_binary.setText(self.logic.broadcast_ip)
+                    self.box_subnet_id_binary.setText(self.logic.binary_string_subnet_id)
+                    self.box_first_ip_binary.setText(self.logic.binary_string_first_ip)
+                    self.box_last_ip_binary.setText(self.logic.binary_string_last_ip)
+                    self.box_broadcast_ip_binary.setText(self.logic.binary_string_broadcast)
 
                     self.logic.ip_range()
                     for i in self.logic.ip_list:
@@ -59,18 +60,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.box_broadcast_ip.clear()
                     self.box_subnet_id_binary.clear()
                     self.box_broadcast_ip_binary.clear()
+
+                    self.box_first_ip_binary.setText(self.logic.binary_string_first_ip)
+                    self.box_last_ip_binary.setText(self.logic.binary_string_last_ip)
+
                     self.logic.ip_range()
                     for i in self.logic.ip_list:
                         self.text_browser.append(i)
 
                 if self.logic.host_bits == 0:
+
                     self.box_first_ip.setText(self.logic.first_ip)
+
                     self.box_last_ip.clear()
                     self.box_subnet_id.clear()
                     self.box_broadcast_ip.clear()
                     self.box_last_ip_binary.clear()
                     self.box_subnet_id_binary.clear()
                     self.box_broadcast_ip_binary.clear()
+
+                    self.box_first_ip_binary.setText(self.logic.binary_string_first_ip)
+
         else:
             pass
 
